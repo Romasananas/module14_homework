@@ -1,0 +1,24 @@
+#result {
+    width: 500px;
+    height: 500px;
+}
+
+input {
+    margin: 10px; 
+    display: block;
+}
+
+#btn {
+    padding: 5px;
+}
+
+.card {
+    width: 200px;
+    margin: 20px;
+}
+
+.card-image {
+    display: block;
+    width: 200px;
+    height: 150px;
+}
