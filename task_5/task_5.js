@@ -4,6 +4,7 @@ const page = document.querySelector('#input1').value;
 const limit = document.querySelector('#input2').value;
 const result = document.querySelector('.result');
 
+
 function displayImg(jsonObj) {
     let blocks = '';
     jsonObj.forEach(item => {
@@ -30,6 +31,7 @@ async function getImg() {
         let response = await fetch(url);
         let json = await response.json();
         displayImg(json);
+        localStorage.setItem('data', JSON.stringify(json));
 
     } else if (page < 1 || page > 10 || typeof(page) != 'number') {
         alert('Номер страницы вне диапазона от 1 до 10');
@@ -40,4 +42,12 @@ async function getImg() {
     }
 };
 
-btn.addEventListener('click', () => getImg());
+btn.addEventListener('click', () => {
+    let data = localStorage.getItem('data');
+    if (data) {
+        let jsonData = JSON.parse(data);
+        displayImg(jsonData);
+    } else {
+        getImg();
+    }
+});
